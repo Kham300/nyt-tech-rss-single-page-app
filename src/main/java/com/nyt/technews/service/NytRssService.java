@@ -1,6 +1,7 @@
 package com.nyt.technews.service;
 
 import com.nyt.technews.dto.ArticleDto;
+import com.nyt.technews.exception.FeedProcessingException;
 import com.nyt.technews.utils.RssUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -24,7 +25,11 @@ public class NytRssService {
                 .map(RssUtils::parseXml)
                 .defaultIfEmpty(List.of())
                 .doOnSuccess(articles -> log.info("Parsed {} articles", articles.size()))
-                .doOnError(error -> log.error("Failed to parse RSS feed", error));
+                .onErrorResume(error -> {
+                    log.error("Failed to parse RSS feed", error);
+
+                    return Mono.error(new FeedProcessingException("Rss news processing failure", error));
+                });
     }
 
 }

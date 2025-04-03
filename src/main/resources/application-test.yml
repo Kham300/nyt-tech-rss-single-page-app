@@ -20,15 +20,15 @@ nyt:
     base-url: https://rss.nytimes.com
     rss-path: /services/xml/rss/nyt/Technology.xml
     timeouts:
-      connect: 5000    # 5 seconds
-      read: 10000      # 10 seconds
-      write: 10000     # 10 seconds
+      connect: 1000
+      read: 1000
+      write: 1000
     connection-pool:
       max-connections: 100
-      acquire-timeout: 5000  # 5 seconds
-      idle-timeout: 30000    # 30 seconds
+      acquire-timeout: 5000
+      idle-timeout: 30000
   retry:
-    max-attempts: 3
+    max-attempts: 0
     backoff:
-      initial-interval: 1000ms
-      max-interval: 3000ms
+      initial-interval: 0ms
+      max-interval: 0ms

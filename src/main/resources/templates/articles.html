@@ -13,6 +13,9 @@
 <body>
 <header class="sticky-header">
     <div class="header-content">
+        <div class="current-datetime">
+            <p th:text="${#dates.format(#dates.createNow(), 'EEE, dd MMM yyyy')}"></p>
+        </div>
         <h1 th:text="#{header.title}">NYT Technology News</h1>
         <div class="language-switcher">
             <a th:href="@{/(lang='en')}"

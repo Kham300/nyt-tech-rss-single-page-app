@@ -1,0 +1,11 @@
+<rss>
+    <channel>
+        <item>
+            <title>Title</title>
+            <link>http://example.com</link>
+            <description>Test description</description>
+            <pubDate>Wed, 21 Oct 2020 18:00:00 GMT</pubDate>
+            <content xmlns='http://search.yahoo.com/mrss/' url='http://example.com/image.jpg'/>
+        </item>
+    </channel>
+</rss>
