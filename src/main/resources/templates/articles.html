@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="en" th:lang="${currentLang}">
+<link rel="stylesheet" th:href="@{/styles.css}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="#{header.title}">NYT Tech News</title>
+    <link rel="stylesheet" th:href="@{/styles.css}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<header class="sticky-header">
+    <div class="header-content">
+        <h1 th:text="#{header.title}">NYT Technology News</h1>
+        <div class="language-switcher">
+            <a th:href="@{/(lang='en')}"
+               th:classappend="${#locale.language == 'en'} ? 'active'"
+               th:text="#{lang.english}">ENG</a>
+            <span class="divider">|</span>
+            <a th:href="@{/(lang='es')}"
+               th:classappend="${#locale.language == 'es'} ? 'active'"
+               th:text="#{lang.spanish}">ESP</a>
+        </div>
+    </div>
+</header>
+
+<!-- Articles List -->
+<main class="articles-container">
+    <article th:each="article : ${articles}" class="article-card">
+        <a th:href="${article.url}" target="_blank" class="article-link">
+            <div class="content-wrapper">
+                <div class="text-content">
+                    <h2 class="article-title" th:text="${article.title}"></h2>
+                    <p class="article-summary" th:text="${article.summary}"></p>
+                    <time class="article-date"
+                          th:datetime="${#dates.format(article.publicationDate, 'yyyy-MM-dd')}"
+                          th:text="${#dates.format(article.publicationDate, 'MMM dd, yyyy')}">
+                    </time>
+                </div>
+                <div class="image-container">
+                    <img th:if="${article.imageUrl}"
+                         th:src="${article.imageUrl}"
+                         alt="Article image"
+                         class="article-image">
+                    <div th:unless="${article.imageUrl}" class="image-placeholder">
+                        <svg><!-- Your placeholder SVG --></svg>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </article>
+</main>
+</body>
+</html>

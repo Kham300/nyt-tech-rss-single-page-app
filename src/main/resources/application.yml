@@ -1,0 +1,32 @@
+spring:
+  config:
+    activate:
+      on-profile: dev
+  logging:
+    level:
+      org.springframework.web: DEBUG
+      reactor.netty: DEBUG
+  thymeleaf:
+    cache: false # disable in development
+  messages:
+    basename: i18n/messages
+    encoding: UTF-8
+
+logging:
+  level:
+    root: INFO
+    com.nyt.technews: DEBUG
+    reactor.netty.http.client: WARN
+
+nyt:
+  api:
+    base-url: https://rss.nytimes.com
+    rss-path: /services/xml/rss/nyt/Technology.xml
+    timeouts:
+      connect: 5000    # 5 seconds
+      read: 10000      # 10 seconds
+      write: 10000     # 10 seconds
+    connection-pool:
+      max-connections: 100
+      acquire-timeout: 5000  # 5 seconds
+      idle-timeout: 30000    # 30 seconds
