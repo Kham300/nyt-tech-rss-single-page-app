@@ -49,7 +49,6 @@ class ArticlesRestControllerIntegrationTest {
 
     @Test
     void getTechArticles_ReturnsValidArticles() {
-        // Arrange
         String mockRssResponse = """
                 <rss version="2.0">
                     <channel>
@@ -69,7 +68,6 @@ class ArticlesRestControllerIntegrationTest {
                                       .setHeader("Content-Type", "application/xml")
                                       .setBody(mockRssResponse));
 
-        // Act & Assert
         webTestClient.get().uri("/api/articles")
                 .exchange()
                 .expectStatus().isOk()
