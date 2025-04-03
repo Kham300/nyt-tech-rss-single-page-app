@@ -1,4 +1,4 @@
-package com.nyt.technews.config;
+package com.nyt.technews.config.cache;
 
 import com.github.benmanes.caffeine.cache.Caffeine;
 

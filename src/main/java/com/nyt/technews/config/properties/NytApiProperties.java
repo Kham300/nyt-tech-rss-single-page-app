@@ -1,4 +1,4 @@
-package com.nyt.technews.config;
+package com.nyt.technews.config.properties;
 
 import lombok.Data;
 
@@ -38,6 +38,5 @@ public class NytApiProperties {
         @DurationUnit(ChronoUnit.MILLIS)
         private Duration idleTimeout = Duration.ofSeconds(30);
 
-        // Getters and Setters
     }
 }

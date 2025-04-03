@@ -1,6 +1,6 @@
 package com.nyt.technews.service;
 
-import com.nyt.technews.config.NytApiProperties;
+import com.nyt.technews.config.properties.NytApiProperties;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Mono;
