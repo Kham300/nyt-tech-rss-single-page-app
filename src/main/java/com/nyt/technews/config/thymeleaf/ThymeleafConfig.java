@@ -7,9 +7,6 @@ import org.thymeleaf.spring6.view.reactive.ThymeleafReactiveViewResolver;
 import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ITemplateResolver;
 
-import org.springframework.beans.BeansException;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.CacheControl;
@@ -20,8 +17,7 @@ import org.springframework.web.reactive.config.WebFluxConfigurer;
 import java.time.Duration;
 
 @Configuration
-public class ThymeleafConfig implements ApplicationContextAware, WebFluxConfigurer {
-    private ApplicationContext context;
+public class ThymeleafConfig implements WebFluxConfigurer {
 
     @Bean
     public ITemplateResolver thymeleafTemplateResolver() {
@@ -59,8 +55,4 @@ public class ThymeleafConfig implements ApplicationContextAware, WebFluxConfigur
                 .setCacheControl(CacheControl.maxAge(Duration.ofDays(30)));
     }
 
-    @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        this.context = applicationContext;
-    }
 }
